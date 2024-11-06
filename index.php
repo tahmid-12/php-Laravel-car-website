@@ -8,8 +8,19 @@
 </head>
 <body>
 
-    <?php include('./client/header.php') ?>
+    <?php 
+        include('./client/header.php');
+
+        if(isset($_GET['signup'])){
+            include('./client/signUp.php');
+        }else if(isset($_GET['login'])){
+            include('./client/login.php');
+        }else{
+            
+        }
+    ?>
     <!-- 28:20 Seconds -->
+    
     
     <?php include('./client/footer.php'); ?>
 </body>
