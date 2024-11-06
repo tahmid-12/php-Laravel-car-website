@@ -1,5 +1,9 @@
 <?php
 
+    include('../common/db.php');
+
+    echo "<br />";
+
     if(isset($_POST['signup'])){
         echo "User Name is ".$_POST['username']. "<br />";
         echo "User Email is ".$_POST['email']. "<br />";
