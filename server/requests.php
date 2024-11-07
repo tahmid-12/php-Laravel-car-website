@@ -4,12 +4,27 @@
 
     echo "<br />";
 
-    if(isset($_POST['signup'])){
-        echo "User Name is ".$_POST['username']. "<br />";
-        echo "User Email is ".$_POST['email']. "<br />";
-        echo "User Password is ".$_POST['password']. "<br />";
-        echo "User Re Type Password is ".$_POST['retype-password']. "<br />";
-        echo "User Address is ".$_POST['address']. "<br />";
+    if (isset($_POST['signup'])) {
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $address = $_POST['address'];
+    
+        $user = $conn->prepare("Insert into `users`
+    (`id`,`username`,`email`,`password`,`address`)
+    values(NULL,'$username','$email','$password','$address');
+    ");
+    
+        $result = $user->execute();
+        $user->insert_id;
+        if ($result) {
+    
+            $_SESSION["user"] = ["username" => $username, "email" => $email, "user_id" => $user->insert_id];
+            header("location: /discuss");
+        } else {
+            echo "New user not registered";
+        }
+    
     }
 
 ?>
