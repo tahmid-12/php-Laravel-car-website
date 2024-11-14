@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,9 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/', [HomeController::class,'index']);
-Route::get('sign-up',[SignupController::class, 'create']);
-Route::get('log-in',[LoginController::class, 'create']);
+
+Route::get('/car/search',[CarController::class, 'search'])->name('car.search');
+Route::resource('/car',CarController::class);
+
+Route::get('sign-up',[SignupController::class, 'create'])->name('sign-up');
+Route::get('log-in',[LoginController::class, 'create'])->name('log-in');

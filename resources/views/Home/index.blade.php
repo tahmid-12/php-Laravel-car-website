@@ -1,9 +1,6 @@
 <x-app-layout title="Home Page">
 
     <x-card color="red">
-        <x-slot:title>Card Title 1</x-slot>
-        Card Content 1
-        <x-slot:footer>Footer</x-slot>
 
         <section class="hero-slider">
 
