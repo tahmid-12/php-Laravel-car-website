@@ -9,6 +9,8 @@ class CarFeatures extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'cars_id';
+
     protected $fillable = [
         'cars_id',
         'abs',
