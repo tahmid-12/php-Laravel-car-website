@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -30,6 +31,36 @@ class Cars extends Model
         'published_at'
     ];
 
+    public function carType(): BelongsTo
+    {
+        return $this->belongsTo(CarTypes::class);
+    }
+
+    public function fuelType(): BelongsTo
+    {
+        return $this->belongsTo(FuelType::class);
+    }
+
+    public function maker(): BelongsTo
+    {
+        return $this->belongsTo(Makers::class);
+    }
+
+    public function model(): BelongsTo
+    {
+        return $this->belongsTo(Models::class);
+    }
+
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(Cities::class);
+    }
+
     public function features(): HasOne
     {
         return $this->hasOne(CarFeatures::class);
@@ -45,8 +76,9 @@ class Cars extends Model
         return $this->hasMany(CarImages::class);
     }
 
-    public function carType(): BelongsTo
+
+    public function favouredCars(): BelongsToMany
     {
-        return $this->belongsTo(CarTypes::class);
+        return $this->belongsToMany(User::class, 'favourite_cars')->withTimestamps();
     }
 }
