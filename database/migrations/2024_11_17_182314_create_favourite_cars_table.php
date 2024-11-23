@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('favourite_cars', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('car_id')->constrained('cars');
+            $table->foreignId('cars_id')->constrained('cars');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
