@@ -9,5 +9,7 @@ class CarImages extends Model
 {
     use HasFactory;
 
+    protected $table = 'cars_images';
+
     protected $fillable = ['image_path', 'position'];
 }

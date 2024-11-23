@@ -20,9 +20,10 @@ class HomeController extends Controller
         // $cars = Cars::first();
 
         // find with id
-        $car = Cars::find(4);
+        $car = Cars::find(3);
 
-        dump($car);
+        // dd($car->features, $car->primaryImage);
+
         return view('Home.index');
     }
 }
